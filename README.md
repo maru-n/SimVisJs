@@ -73,16 +73,34 @@ let draw_func = function(canvas, sim) {
 
 this code visualize above circular motion simulation by scaling to target canvas.
 
-### Application component (user interface)
+### Application interface
 
-If you edit your application interface, you can edit App (React component).
+You can edit your application interface and add some components.
 
-Don't worry if you have no knowledge aboug React or JSX, it is like html and you can learn how to use components by example codes.
+visualization function made on above is set in Visualization component on here.
+```jsx
+export default (
+    <SimVisApp style={{width:600, margin:'auto'}}>
+        <Visualizer width={600} height={400} sim_name={'my_sim'} draw_func={draw_func} />
+        <div>
+            <PlayButton sim_name={'my_sim'} />
+        </div>
+    </SimVisApp>
+);
+```
+This is like html, but not html but JSX.
+This code will be rendered on index.js by React.
 
+If you have no knowledge about JSX or React, don't worry about it.
+You can know how to use some components by example codes.
 
 ## Examples
 
 ### How to run it
+copy example code on your App.js
+
+or
+
 edit /src/index.js
 
 ```diff
