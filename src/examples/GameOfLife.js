@@ -5,8 +5,8 @@ import {SimVisApp, Visualizer, PlayButton, InitButton, StepButton} from './libs/
 
 SimVisJs.register('game_of_life', {
     init() {
-        this.width = 600
-        this.height = 400
+        this.width = 800
+        this.height = 600
         this.cells = [...Array(this.width)].map(() => Array(this.height));
         this.cellsNext = [...Array(this.width)].map(() => Array(this.height));
         for(let x = 0; x < this.cells.length; x++) {
@@ -63,8 +63,8 @@ let draw_func = function(canvas, sim) {
 }
 
 export default (
-    <SimVisApp style={{width:600, margin:'auto'}}>
-        <Visualizer width={600} height={400} sim_name={'game_of_life'} draw_func={draw_func} />
+    <SimVisApp style={{width:800, margin:'auto'}}>
+        <Visualizer width={800} height={600} sim_name={'game_of_life'} draw_func={draw_func} />
         <div>
             <PlayButton sim_name={'game_of_life'} />
             <StepButton sim_name={'game_of_life'} />
