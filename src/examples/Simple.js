@@ -1,6 +1,6 @@
 import React from 'react';
-import SimVisJs from './libs/SimVisJs.js'
-import {Visualizer, PlayButton} from './libs/components.js'
+import SimVisJs from '../libs/SimVisJs.js'
+import {Visualizer, PlayButton} from '../libs/components.js'
 
 
 SimVisJs.register('my_sim', {
