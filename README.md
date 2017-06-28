@@ -90,6 +90,12 @@ edit /src/index.js
 ++ import App from './examples/ExampleName'
 ```
 
+## Development
+
+### Test
+
+required [cairo](https://www.cairographics.org/)
+
 
 ## Comments
 
