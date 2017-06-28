@@ -19,9 +19,9 @@ $ npm install
 $ npm start
 ```
 
-### Edit your simulation and visualization
+## Edit Simulation, Visualization and Application
 
-#### simulation object
+### Simulation object
 
 You can add simulation objects on your app by SimVisJs.register(sim_name, sim_object).
 
@@ -50,7 +50,7 @@ SimVisJs.register('my_sim', {
 
 This is simple code of circular motion.
 
-#### visualization function
+### Visualization function
 
 When you want to visualize your simulation on display, you make your draw function.
 
@@ -74,7 +74,7 @@ let draw_func = function(canvas, sim) {
 
 this code visualize above circular motion simulation by scaling to target canvas.
 
-#### make app
+### Application component (user interface)
 
 If you edit your application interface, you can edit App (React component).
 
@@ -83,13 +83,15 @@ Don't worry if you have no knowledge aboug React or JSX, it is like html and you
 
 ## Examples
 
-### How to use
+### How to run it
 edit /src/index.js
 
 ```diff
 -- import App from './App';
-++ import App from './examples/ExampleFileName'
+++ import App from './examples/ExampleName'
 ```
 
+
+## Comments
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) ([documentation](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md)).
