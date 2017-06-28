@@ -49,9 +49,9 @@ class App extends React.Component {
                     <InitButton sim_name={'parameter_slider_example'} />
                 </div>
                 <div>
-                    <ParameterSlider sim_name={'parameter_slider_example'} label={'spd'} parameter={'speed'} min={-0.5} max={0.5} step={0.001} />
-                    <ParameterSlider sim_name={'parameter_slider_example'} label={'s_r'} parameter={'r'} min={1} max={100} step={1} />
-                    <ParameterSlider sim_name={'parameter_slider_example'} label={'t_r'} parameter={'rr'} min={0} max={200} step={1} />
+                    <ParameterSlider sim_name={'parameter_slider_example'} label={'speed'} parameter={'speed'} min={-0.5} max={0.5} step={0.001} />
+                    <ParameterSlider sim_name={'parameter_slider_example'} label={'radius of circle'} parameter={'r'} min={1} max={100} step={1} />
+                    <ParameterSlider sim_name={'parameter_slider_example'} label={'radius of movement'} parameter={'rr'} min={0} max={200} step={1} />
                 </div>
             </div>
         );

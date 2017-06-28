@@ -131,12 +131,7 @@ StepButton.propTypes = {
  */
 export class ParameterSlider extends React.Component {
     style = {
-        display: 'flex',
-        height: 30,
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        float: 'left',
-        margin: "0px 10px 0px 0px"
+        margin: "10px 10px 0px 0px"
     }
 
     constructor(props) {
@@ -156,18 +151,20 @@ export class ParameterSlider extends React.Component {
     };
     
     render() {
+        this.style.width = 400
         return (
             <div style={this.style}>
-                <span style={{margin: '24px 10px 0 0'}}>{this.props.label}</span>
+                <div>{this.props.label} : {this.state.value}</div>
                 <Slider
                     min={this.props.min}
                     max={this.props.max}
                     step={this.props.step}
                     value={this.state.value}
                     onChange={this.handleSlider}
-                    style={{width: 300}}
+                    style={{width: 400, position:'relative'}}
+                    sliderStyle={{margin:0}}
                     />
-                <span style={{margin: '24px 10px'}}>{this.state.value}</span>
+                <div style={{clear:'both'}} />
             </div>
         );
     }
