@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
 import SimVisJs from './SimVisJs.js'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 import PlayArrow from 'material-ui/svg-icons/av/play-arrow';
 import SkipNext from 'material-ui/svg-icons/av/skip-next';
@@ -9,6 +10,22 @@ import Replay from 'material-ui/svg-icons/av/replay';
 import Slider from 'material-ui/Slider';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
+
+/*
+ * SimVisApp
+ * top level component of SimVisJs Application
+ */
+export class SimVisApp extends Component {
+    render() {
+        return (
+            <MuiThemeProvider><div style={this.props.style}>{this.props.children}</div></MuiThemeProvider>
+        )
+    }
+}
 
 /*
  * Visualizer

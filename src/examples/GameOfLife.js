@@ -1,6 +1,6 @@
 import React from 'react';
-import SimVisJs from '../libs/SimVisJs.js'
-import {Visualizer, PlayButton, InitButton, StepButton} from '../libs/components.js'
+import SimVisJs from './libs/SimVisJs.js'
+import {SimVisApp, Visualizer, PlayButton, InitButton, StepButton} from './libs/components.js'
 
 
 SimVisJs.register('game_of_life', {
@@ -62,20 +62,13 @@ let draw_func = function(canvas, sim) {
     ctx.putImageData(imgData, 0, 0);
 }
 
-
-class App extends React.Component {
-    render() {
-        return (
-            <div className="App" style={{width:600, margin:'auto'}}>
-                <Visualizer width={600} height={400} sim_name={'game_of_life'} draw_func={draw_func} />
-                <div>
-                    <PlayButton sim_name={'game_of_life'} />
-                    <StepButton sim_name={'game_of_life'} />
-                    <InitButton sim_name={'game_of_life'} />
-                </div>
-            </div>
-        );
-    }
-}
-
-export default App;
+export default (
+    <SimVisApp style={{width:600, margin:'auto'}}>
+        <Visualizer width={600} height={400} sim_name={'game_of_life'} draw_func={draw_func} />
+        <div>
+            <PlayButton sim_name={'game_of_life'} />
+            <StepButton sim_name={'game_of_life'} />
+            <InitButton sim_name={'game_of_life'} />
+        </div>
+    </SimVisApp>
+)

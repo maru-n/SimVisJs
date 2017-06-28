@@ -1,6 +1,6 @@
 import React from 'react';
-import SimVisJs from '../libs/SimVisJs.js'
-import {Visualizer, ParameterSelecter} from '../libs/components.js'
+import SimVisJs from './libs/SimVisJs.js'
+import {SimVisApp, Visualizer, ParameterSelecter} from './libs/components.js'
 
 
 SimVisJs.register('my_sim', {
@@ -28,27 +28,20 @@ let draw_func = function(canvas, sim) {
     ctx.fill()
 }
 
-
-class App extends React.Component {
-    render() {
-        return (
-            <div className="App" style={{width:600, margin:'auto'}}>
-                <Visualizer width={600} height={400} sim_name={'my_sim'} draw_func={draw_func} />
-                <div>
-                    <ParameterSelecter
-                        label={'color'}
-                        sim_name={'my_sim'}
-                        parameter={'color'}
-                        choices={['red','blue','green']} />
-                    <ParameterSelecter
-                        label={'size'}
-                        sim_name={'my_sim'}
-                        parameter={'size'}
-                        choices={{'large':300, 'medium':150, 'small':50}} />
-                </div>
-            </div>
-        );
-    }
-}
-
-export default App;
+export default (
+    <SimVisApp style={{width:600, margin:'auto'}}>
+        <Visualizer width={600} height={400} sim_name={'my_sim'} draw_func={draw_func} />
+        <div>
+            <ParameterSelecter
+                label={'color'}
+                sim_name={'my_sim'}
+                parameter={'color'}
+                choices={['red','blue','green']} />
+            <ParameterSelecter
+                label={'size'}
+                sim_name={'my_sim'}
+                parameter={'size'}
+                choices={{'large':300, 'medium':150, 'small':50}} />
+        </div>
+    </SimVisApp>
+)

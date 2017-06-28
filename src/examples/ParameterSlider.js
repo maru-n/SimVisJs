@@ -1,6 +1,6 @@
 import React from 'react';
-import SimVisJs from '../libs/SimVisJs.js'
-import {Visualizer, PlayButton, InitButton, ParameterSlider} from '../libs/components.js'
+import SimVisJs from './libs/SimVisJs.js'
+import {SimVisApp, Visualizer, PlayButton, InitButton, ParameterSlider} from './libs/components.js'
 
 
 SimVisJs.register('parameter_slider_example', {
@@ -38,24 +38,17 @@ let draw_func = function(canvas, sim) {
     ctx.fill()
 }
 
-
-class App extends React.Component {
-    render() {
-        return (
-            <div className="App" style={{width:600, margin:'auto'}}>
-                <Visualizer width={600} height={400} sim_name={'parameter_slider_example'} draw_func={draw_func} />
-                <div>
-                    <PlayButton sim_name={'parameter_slider_example'} />
-                    <InitButton sim_name={'parameter_slider_example'} />
-                </div>
-                <div>
-                    <ParameterSlider sim_name={'parameter_slider_example'} label={'speed'} parameter={'speed'} min={-0.5} max={0.5} step={0.001} />
-                    <ParameterSlider sim_name={'parameter_slider_example'} label={'radius of circle'} parameter={'r'} min={1} max={100} step={1} />
-                    <ParameterSlider sim_name={'parameter_slider_example'} label={'radius of movement'} parameter={'rr'} min={0} max={200} step={1} />
-                </div>
-            </div>
-        );
-    }
-}
-
-export default App;
+export default (
+    <SimVisApp style={{width:600, margin:'auto'}}>
+        <Visualizer width={600} height={400} sim_name={'parameter_slider_example'} draw_func={draw_func} />
+        <div>
+            <PlayButton sim_name={'parameter_slider_example'} />
+            <InitButton sim_name={'parameter_slider_example'} />
+        </div>
+        <div>
+            <ParameterSlider sim_name={'parameter_slider_example'} label={'speed'} parameter={'speed'} min={-0.5} max={0.5} step={0.001} />
+            <ParameterSlider sim_name={'parameter_slider_example'} label={'radius of circle'} parameter={'r'} min={1} max={100} step={1} />
+            <ParameterSlider sim_name={'parameter_slider_example'} label={'radius of movement'} parameter={'rr'} min={0} max={200} step={1} />
+        </div>
+    </SimVisApp>
+)

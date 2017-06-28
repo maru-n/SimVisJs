@@ -1,6 +1,6 @@
 import React from 'react';
-import SimVisJs from '../libs/SimVisJs.js'
-import {Visualizer} from '../libs/components.js'
+import SimVisJs from './libs/SimVisJs.js'
+import {SimVisApp, Visualizer} from './libs/components.js'
 
 
 SimVisJs.register('my_simulation', {
@@ -88,23 +88,16 @@ let draw_func = function(n) {
 
 SimVisJs.start('my_simulation')
 
-
-class App extends React.Component {
-    render() {
-        return (
-            <div className="App" style={{width:600, margin:'auto'}}>
-                <Visualizer width={600} height={200} sim_name={'my_simulation'} draw_func={draw_func_all} />
-                <span> #0 </span>
-                <Visualizer width={600} height={50} sim_name={'my_simulation'} draw_func={draw_func(0)} />
-                <span> #1 </span>
-                <Visualizer width={600} height={50} sim_name={'my_simulation'} draw_func={draw_func(1)} />
-                <span> #2 </span>
-                <Visualizer width={600} height={50} sim_name={'my_simulation'} draw_func={draw_func(2)} />
-                <span> #3 </span>
-                <Visualizer width={600} height={50} sim_name={'my_simulation'} draw_func={draw_func(3)} />
-            </div>
-        );
-    }
-}
-
-export default App;
+export default (
+    <SimVisApp style={{width:600, margin:'auto'}}>
+        <Visualizer width={600} height={200} sim_name={'my_simulation'} draw_func={draw_func_all} />
+        <span> #0 </span>
+        <Visualizer width={600} height={50} sim_name={'my_simulation'} draw_func={draw_func(0)} />
+        <span> #1 </span>
+        <Visualizer width={600} height={50} sim_name={'my_simulation'} draw_func={draw_func(1)} />
+        <span> #2 </span>
+        <Visualizer width={600} height={50} sim_name={'my_simulation'} draw_func={draw_func(2)} />
+        <span> #3 </span>
+        <Visualizer width={600} height={50} sim_name={'my_simulation'} draw_func={draw_func(3)} />
+    </SimVisApp>
+)
