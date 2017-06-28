@@ -78,6 +78,9 @@ this code visualize above circular motion simulation by scaling to target canvas
 
 If you edit your application interface, you can edit App (React component).
 
+Don't worry if you have no knowledge aboug React or JSX, it is like html and you can learn how to use components by example codes.
+
+
 ## Examples
 
 ### How to use
