@@ -34,7 +34,6 @@ init() will executed at first time you start the simulation and update() will ru
 ```js
 SimVisJs.register('my_sim', {
     init() {
-        this.color = 'red'
         this.x = 0
         this.y = 0
         this.th = 0
