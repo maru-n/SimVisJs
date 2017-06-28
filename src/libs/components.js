@@ -14,12 +14,13 @@ import MenuItem from 'material-ui/MenuItem';
  * Visualizer
  * canvas component to visualize simulation
  */
-const canvas_style = {
-    border: '1px solid black',
-    //width: '100%',
-}
-
 export class Visualizer extends Component {
+    style = {
+        border: '1px solid black',
+        position: 'relative',
+        top: '-1px',
+        left: '-1px',
+    }
     componentDidMount() {
         const {canvas} = this.refs;
         let l = this.props.draw_func.bind(null, canvas)
@@ -28,11 +29,14 @@ export class Visualizer extends Component {
     }
 
     render() {
+        this.style.width = this.props.width
+        this.style.height = this.props.height
         return (
-            <canvas ref="canvas"
-                width={this.props.width} height={this.props.height}
-                style={canvas_style}
-                />
+            <div style={this.style}>
+                <canvas ref="canvas"
+                    width={this.props.width}
+                    height={this.props.height} />
+            </div>
         )
     }
 }
@@ -50,7 +54,7 @@ Visualizer.propTypes = {
  * buttons to start/stop/init/step of simulation
  */
 let button_style = {
-    margin: "0px 5px 0px 0px"
+    margin: "5px 5px 0px 0px"
 }
 export class PlayButton extends Component {
     constructor(props) {
@@ -125,16 +129,16 @@ StepButton.propTypes = {
  * ParameterSlider
  * slider to controll parameter of simulation
  */
-const slider_style = {
-    display: 'flex',
-    height: 30,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    float: 'left',
-    margin: "0px 10px 0px 0px"
-};
-
 export class ParameterSlider extends React.Component {
+    style = {
+        display: 'flex',
+        height: 30,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        float: 'left',
+        margin: "0px 10px 0px 0px"
+    }
+
     constructor(props) {
         super(props)
         let callback = ((sim) => {
@@ -153,7 +157,7 @@ export class ParameterSlider extends React.Component {
     
     render() {
         return (
-            <div style={slider_style}>
+            <div style={this.style}>
                 <span style={{margin: '24px 10px 0 0'}}>{this.props.label}</span>
                 <Slider
                     min={this.props.min}
@@ -188,11 +192,11 @@ ParameterSlider.propTypes = {
  * ParameterSelecter
  * component to select parameter from a set
  */
-const selecter_style = {
-    margin: "0px 10px 0px 0px"
-};
-
 export class ParameterSelecter extends Component {
+    style = {
+        margin: "0px 10px 0px 0px"
+    }
+
     constructor(props) {
         super(props)
         let callback = ((sim) => {
@@ -227,7 +231,7 @@ export class ParameterSelecter extends Component {
                 floatingLabelText={this.props.label}
                 value={this.state.value}
                 onChange={this.handleChange}
-                style={selecter_style}
+                style={this.style}
                 >
                 {items}
             </SelectField>
