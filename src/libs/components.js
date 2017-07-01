@@ -38,28 +38,53 @@ export class Visualizer extends Component {
         top: '-1px',
         left: '-1px',
     }
+    constructor(props) {
+        super(props);
+        this.handleDbClick = this.handleDbClick.bind(this);
+    }
     componentDidMount() {
         const {canvas} = this.refs;
         let l = this.props.draw_func.bind(null, canvas)
         l(SimVisJs.get_sim(this.props.sim_name))
         SimVisJs.addUpdateListener(this.props.sim_name, l)
     }
-
+    handleDbClick() {
+        const elm = this.refs.canvas
+        if (elm.requestFullscreen) {
+            elm.requestFullscreen();
+        } else if (elm.mozRequestFullScreen) {
+            elm.mozRequestFullScreen();
+        } else if (elm.webkitRequestFullScreen) {
+            elm.webkitRequestFullScreen();
+        }
+    }
     render() {
         this.wrapper_style.width =
             this.props.display_width ? this.props.display_width : this.props.width
         this.wrapper_style.height =
             this.props.display_height ? this.props.display_height : this.props.height
-        let canvas_style = {
-            width: this.wrapper_style.width,
-            height: this.wrapper_style.height
+            
+        let canvas_style
+        const canvas_asp = this.props.width / this.props.height
+        const screen_asp = window.screen.width / window.screen.height
+        if (canvas_asp > screen_asp) {
+            canvas_style = {
+                position: 'absolute',
+                width: '100%',
+            }
+        } else {
+            canvas_style = {
+                position: 'absolute',
+                height: '100%',
+            }
         }
         return (
             <div style={this.wrapper_style}>
-                <canvas ref="canvas"
-                    width={this.props.width}
-                    height={this.props.height}
-                    style={canvas_style}/>
+                    <canvas ref="canvas"
+                        width={this.props.width}
+                        height={this.props.height}
+                        onDoubleClick={this.props.switch_fullscreen ? this.handleDbClick : null}
+                        style={canvas_style}/>
             </div>
         )
     }

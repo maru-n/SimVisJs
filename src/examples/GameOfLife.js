@@ -64,7 +64,11 @@ let draw_func = function(canvas, sim) {
 
 export default (
     <SimVisApp style={{width:WIDTH, margin:'auto'}}>
-        <Visualizer width={WIDTH} height={HEIGHT} display_width={WIDTH} display_height={HEIGHT} sim_name={'game_of_life'} draw_func={draw_func} />
+        <Visualizer
+            width={WIDTH} height={HEIGHT}
+            display_width={WIDTH} display_height={HEIGHT}
+            switch_fullscreen={true}
+            sim_name={'game_of_life'} draw_func={draw_func} />
         <div>
             <PlayButton sim_name={'game_of_life'} />
             <StepButton sim_name={'game_of_life'} />
