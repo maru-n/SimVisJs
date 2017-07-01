@@ -32,7 +32,7 @@ export class SimVisApp extends Component {
  * canvas component to visualize simulation
  */
 export class Visualizer extends Component {
-    style = {
+    wrapper_style = {
         border: '1px solid black',
         position: 'relative',
         top: '-1px',
@@ -46,23 +46,40 @@ export class Visualizer extends Component {
     }
 
     render() {
-        this.style.width = this.props.width
-        this.style.height = this.props.height
+        this.wrapper_style.width =
+            this.props.display_width ? this.props.display_width : this.props.width
+        this.wrapper_style.height =
+            this.props.display_height ? this.props.display_height : this.props.height
+        let canvas_style = {
+            width: this.wrapper_style.width,
+            height: this.wrapper_style.height
+        }
         return (
-            <div style={this.style}>
+            <div style={this.wrapper_style}>
                 <canvas ref="canvas"
                     width={this.props.width}
-                    height={this.props.height} />
+                    height={this.props.height}
+                    style={canvas_style}/>
             </div>
         )
     }
 }
 
 Visualizer.propTypes = {
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
+    width: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string]).isRequired,
+    height: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string]).isRequired,
     sim_name: PropTypes.string.isRequired,
     draw_func: PropTypes.func.isRequired,
+    display_width: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string]),
+    display_height: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string]),
 };
 
 

@@ -2,11 +2,13 @@ import React from 'react';
 import SimVisJs from './libs/SimVisJs.js'
 import {SimVisApp, Visualizer, PlayButton, InitButton, StepButton} from './libs/components.js'
 
+const WIDTH = 800
+const HEIGHT = 600
 
 SimVisJs.register('game_of_life', {
+    width: WIDTH,
+    height: HEIGHT,
     init() {
-        this.width = 800
-        this.height = 600
         this.cells = [...Array(this.width)].map(() => Array(this.height));
         this.cellsNext = [...Array(this.width)].map(() => Array(this.height));
         for(let x = 0; x < this.cells.length; x++) {
@@ -46,13 +48,11 @@ SimVisJs.register('game_of_life', {
 
 let draw_func = function(canvas, sim) {
     const ctx = canvas.getContext('2d');
-    const width = canvas.width;
-    const height = canvas.height;
-    let imgData = ctx.createImageData(width, height);
-    for(let x = 0; x < width; x++) {
-        for (let y = 0; y < height; y++) {
+    let imgData = ctx.createImageData(sim.width, sim.height);
+    for(let x = 0; x < sim.width; x++) {
+        for (let y = 0; y < sim.height; y++) {
             const s = sim.cells[x][y]
-            const i = x + y*width;
+            const i = x + y*sim.width;
             imgData.data[i*4+0] = (1-s)*255;
             imgData.data[i*4+1] = (1-s)*255;
             imgData.data[i*4+2] = (1-s)*255;
@@ -63,8 +63,8 @@ let draw_func = function(canvas, sim) {
 }
 
 export default (
-    <SimVisApp style={{width:800, margin:'auto'}}>
-        <Visualizer width={800} height={600} sim_name={'game_of_life'} draw_func={draw_func} />
+    <SimVisApp style={{width:WIDTH, margin:'auto'}}>
+        <Visualizer width={WIDTH} height={HEIGHT} display_width={WIDTH} display_height={HEIGHT} sim_name={'game_of_life'} draw_func={draw_func} />
         <div>
             <PlayButton sim_name={'game_of_life'} />
             <StepButton sim_name={'game_of_life'} />
