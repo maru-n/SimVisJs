@@ -64,8 +64,8 @@ let draw_func = function(canvas, sim) {
     ctx.rect(0, 0, canvas.width, canvas.height)
     ctx.fill()
     
-    ctx.fillStyle = sim.color
-    ctx.beginPath()
+    ctx.fillStyle = 'blue'
+    ctx.beginPath()
     ctx.arc(canvas.width/2 + sim.x * 100, canvas.height/2 + sim.y * 100, 10, 0, Math.PI*2,true)
     ctx.fill()
 }
@@ -96,7 +96,7 @@ You can know how to use some components by example codes.
 
 ## Examples
 
-### How to run it
+### How to run
 copy example code on your App.js
 
 or
