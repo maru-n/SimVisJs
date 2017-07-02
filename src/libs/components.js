@@ -39,8 +39,9 @@ export class Visualizer extends Component {
         left: '-1px',
     }
     constructor(props) {
-        super(props);
-        this.handleDbClick = this.handleDbClick.bind(this);
+        super(props)
+        this.handleClick = this.handleClick.bind(this)
+        this.handleDbClick = this.handleDbClick.bind(this)
     }
     componentDidMount() {
         const {canvas} = this.refs;
@@ -56,6 +57,13 @@ export class Visualizer extends Component {
             elm.mozRequestFullScreen();
         } else if (elm.webkitRequestFullScreen) {
             elm.webkitRequestFullScreen();
+        }
+    }
+    handleClick() {
+        if (this.props.onClick) {
+            const canvas = this.refs.canvas
+            this.props.onClick(canvas, SimVisJs.get_sim(this.props.sim_name))
+            SimVisJs.refresh(this.props.sim_name)
         }
     }
     render() {
@@ -84,6 +92,7 @@ export class Visualizer extends Component {
                         width={this.props.width}
                         height={this.props.height}
                         onDoubleClick={this.props.switch_fullscreen ? this.handleDbClick : null}
+                        onClick = {this.handleClick}
                         style={canvas_style}/>
             </div>
         )

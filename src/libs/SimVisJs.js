@@ -73,6 +73,10 @@ let SimVisJs = {
         this.get_sim(name).init()
         this._call_update_listeners(name)
     },
+    
+    refresh(name) {
+        this._call_update_listeners(name)
+    },
 
     _get_model: function(name) {
         return this._models[name]

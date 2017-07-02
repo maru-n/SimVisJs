@@ -25,3 +25,8 @@ import App5 from './Simple';
 it('Simple: enders without crashing', () => {
     ReactDOM.render(App5, document.createElement('div'));
 });
+
+import App6 from './MouseEvents';
+it('Simple: enders without crashing', () => {
+    ReactDOM.render(App6, document.createElement('div'));
+});
