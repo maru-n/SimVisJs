@@ -1,6 +1,6 @@
 # SimVisJs
 
-Skelton project of (dynamical system) simulation visualizer.
+Simple framework to simulate, visualize and controll time development system.
 
 ## Getting Started
 
@@ -27,7 +27,7 @@ You can add simulation objects on your app by SimVisJs.register(sim_name, sim_ob
 
 sim_name is unique identifier for the simulation.
 
-Simulation object have to include 2 functions, init and update().
+Simulation object have to include 2 functions, init() and update().
 
 init() will executed at first time you start the simulation and update() will run every frame.
 
