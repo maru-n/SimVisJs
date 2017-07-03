@@ -39,12 +39,21 @@ let draw_func = function(canvas, sim) {
     ctx.fill()
 }
 
-let on_visualizer_click = function(canvas, sim) {
+let visualizer_click = function(canvas, sim) {
     sim.switch_color()
+}
+
+let visualizer_mouse_move = function(canvas, sim, x, y) {
+    console.log(x,y)
+    sim.x = x
+    sim.y = y
 }
 
 export default (
     <SimVisApp style={{width:600, margin:'auto'}}>
-        <Visualizer width={600} height={400} sim_name={'my_sim'} draw_func={draw_func} onClick={on_visualizer_click} />
+        <Visualizer width={600} height={400} sim_name={'my_sim'}
+            draw_func={draw_func}
+            onClick={visualizer_click}
+            onMouseMove={visualizer_mouse_move} />
     </SimVisApp>
 );

@@ -42,6 +42,7 @@ export class Visualizer extends Component {
         super(props)
         this.handleClick = this.handleClick.bind(this)
         this.handleDbClick = this.handleDbClick.bind(this)
+        this.handleMouseMove = this.handleMouseMove.bind(this)
     }
     componentDidMount() {
         const {canvas} = this.refs;
@@ -63,6 +64,15 @@ export class Visualizer extends Component {
         if (this.props.onClick) {
             const canvas = this.refs.canvas
             this.props.onClick(canvas, SimVisJs.get_sim(this.props.sim_name))
+            SimVisJs.refresh(this.props.sim_name)
+        }
+    }
+    handleMouseMove(event) {
+        if (this.props.onMouseMove) {
+            const canvas = this.refs.canvas
+            const rect = canvas.getBoundingClientRect()
+            this.props.onMouseMove(canvas, SimVisJs.get_sim(this.props.sim_name),
+                event.clientX - rect.left, event.clientY - rect.top)
             SimVisJs.refresh(this.props.sim_name)
         }
     }
@@ -93,6 +103,7 @@ export class Visualizer extends Component {
                         height={this.props.height}
                         onDoubleClick={this.props.switch_fullscreen ? this.handleDbClick : null}
                         onClick = {this.handleClick}
+                        onMouseMove = {this.handleMouseMove}
                         style={canvas_style}/>
             </div>
         )
