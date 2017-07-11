@@ -108,6 +108,32 @@ edit /src/index.js
 ++ import App from './examples/ExampleName'
 ```
 
+## Components List
+
+Read example code to know detail or how to use.
+
+### SimVisApp
+Top level component for application
+
+### Visualizer
+2D/3D visualizer
+
+### PlayButton
+Button to play/pause a target simulation.
+
+### InitButton
+Button to init a target simulation.
+
+### StepButton
+Button to step execution of a target simulation.
+
+### ParameterSlider
+Slider for changing a parameter.
+
+### ParameterSelecter
+Select a parameter from registered choices.
+
+
 ## Development
 
 ### Test
